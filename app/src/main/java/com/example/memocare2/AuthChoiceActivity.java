@@ -20,7 +20,7 @@ public class AuthChoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth_choice);
 
-        // if user is already logged in dont stay here
+
         SharedPreferences session = getSharedPreferences(PREFS_SESSION, MODE_PRIVATE);
         String email = session.getString(KEY_USER_EMAIL, "");
         if (email != null && !email.trim().isEmpty()) {
