@@ -1,0 +1,55 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.example.memocare2'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.memocare2"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // --- Core AndroidX ---
+    implementation libs.appcompat
+    implementation libs.activity
+    implementation libs.constraintlayout
+
+    // --- Material Design (for TextInputLayout, Buttons, etc.) ---
+    implementation 'com.google.android.material:material:1.12.0'
+
+    // ✅ Volley (needed for SupportActivity API calls)
+    implementation 'com.android.volley:volley:1.2.1'
+
+    // ✅ OkHttp (needed for AI evaluate + news API)
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
+    // --- Unit testing ---
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}

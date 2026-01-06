@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F2FF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header block -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#FFFFFF"
+            android:elevation="2dp">
+
+            <TextView
+                android:id="@+id/textTitleLifestyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lifestyle Questionnaire"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/textSubtitleLifestyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Please answer all questions."
+                android:textSize="14sp"
+                android:textColor="#666666" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="1) What is your age (years)?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/etLifeAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="Example: 24"
+            android:inputType="number"
+            android:padding="10dp"
+            android:background="#FFFFFF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="2) What is your gender?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbLifeMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:tag="Male"/>
+
+            <RadioButton
+                android:id="@+id/rbLifeFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:tag="Female"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="3) What is your weight (kg)?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/etLifeWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="Example: 68"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:background="#FFFFFF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="4) What is your dominant hand?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeHand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbLifeLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Left-handed (mostly write with left)"
+                android:tag="Left" />
+
+            <RadioButton
+                android:id="@+id/rbLifeRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Right-handed (mostly write with right)"
+                android:tag="Right" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="5) What is your smoking status?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeSmoking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbLifeNever"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Never smoked (or less than 100 cigarettes ever)"
+                android:tag="Never Smoked" />
+
+            <RadioButton
+                android:id="@+id/rbLifeFormer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Former smoker (quit, not smoking now)"
+                android:tag="Former Smoker" />
+
+            <RadioButton
+                android:id="@+id/rbLifeCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current smoker (smoke now, any amount)"
+                android:tag="Current Smoker" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="6) What is your education level?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbEduNoSchool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No formal schooling"
+                android:tag="No School" />
+
+            <RadioButton
+                android:id="@+id/rbEduPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Primary school (basic level)"
+                android:tag="Primary School" />
+
+            <RadioButton
+                android:id="@+id/rbEduSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Secondary school (high school level)"
+                android:tag="Secondary School" />
+
+            <RadioButton
+                android:id="@+id/rbEduDegree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diploma / Degree (college or university)"
+                android:tag="Diploma/Degree" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="7) How is your sleep quality most nights?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeSleepQuality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbSleepPoor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poor (often tired, wake up a lot)"
+                android:tag="Poor" />
+
+            <RadioButton
+                android:id="@+id/rbSleepGood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Good (sleep well, feel rested)"
+                android:tag="Good" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="8) How would you describe your diet most days?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeDiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbDietMed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mediterranean (veg, fish, olive oil, less processed food)"
+                android:tag="Mediterranean Diet" />
+
+            <RadioButton
+                android:id="@+id/rbDietBalanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balanced (mix of protein, veg, carbs, not extreme)"
+                android:tag="Balanced Diet" />
+
+            <RadioButton
+                android:id="@+id/rbDietLowCarb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low-carb (reduced bread/pasta/sugar)"
+                android:tag="Low-Carb Diet" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="9) How would you describe your physical activity?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbActSed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sedentary (mostly sitting, little to no exercise)"
+                android:tag="Sedentary" />
+
+            <RadioButton
+                android:id="@+id/rbActMild"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Light activity (walks / exercise 1–2 days per week)"
+                android:tag="Mild Activity" />
+
+            <RadioButton
+                android:id="@+id/rbActMod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moderate activity (exercise 3+ days per week)"
+                android:tag="Moderate Activity" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="10) Do you have diabetes (diagnosed)?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeDiabetic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbDiaYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes (diagnosed by a doctor)"
+                android:tag="1" />
+
+            <RadioButton
+                android:id="@+id/rbDiaNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:tag="0" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="11) Family history of dementia?"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgLifeFamilyDementia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <RadioButton
+                android:id="@+id/rbFamYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes (parent/grandparent/sibling had dementia)"
+                android:tag="Yes" />
+
+            <RadioButton
+                android:id="@+id/rbFamNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No / Not sure"
+                android:tag="No" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSubmitLifestyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Submit answers"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:background="#6A47C5"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnBackLifestyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            android:text="Back to tests"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:background="#6A47C5"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>

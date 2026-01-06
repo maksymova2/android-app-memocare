@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#F8F2FF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your results"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/tvLifestyleSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lifestyle questionnaire has not been completed yet."
+            android:layout_marginTop="16dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvSpeechSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Speech test has not been completed yet."
+            android:layout_marginTop="16dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvCogSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cognitive test has not been completed yet."
+            android:layout_marginTop="16dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnFinish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:layout_marginTop="20dp"
+            android:background="#6A47C5"
+            android:textColor="#FFFFFF"
+            android:padding="14dp" />
+
+        <Button
+            android:id="@+id/btnPayUnlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unlock Full AI Results"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/tvPremiumResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Premium AI Results:\n• Speech pattern analysis\n• Advanced cognitive insights\n• Personalised recommendations"
+            android:visibility="gone"
+            android:layout_marginTop="16dp" />
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F2FF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Memory and Attention Test"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="1) Memorize words  2) Tap when you see A  3) Recall the words"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+        <LinearLayout
+            android:id="@+id/sectionEncode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:id="@+id/tvEncodeHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="When you press Start, words will appear one by one. Try to remember as many as you can."
+                android:textSize="16sp"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/tvWordBig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="#6A47C5"
+                android:layout_marginTop="20dp"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/btnStartMiniTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Start test"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:background="#6A47C5"
+                android:padding="12dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/sectionAttention"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:id="@+id/tvAttentionHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tap ONLY when you see: A"
+                android:textSize="16sp"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/tvAttentionTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time: 20s"
+                android:textStyle="bold"
+                android:textColor="#6A47C5"
+                android:textSize="18sp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/tvLetter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textAlignment="center"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="12dp" />
+
+            <Button
+                android:id="@+id/btnTap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tap when it's A"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:background="#6A47C5"
+                android:padding="14dp"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/sectionRecall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:id="@+id/tvRecallHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Type all the words you remember (separated by space or new line):"
+                android:textSize="16sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/etRecall"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="top|start"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:hint="type here..." />
+
+            <Button
+                android:id="@+id/btnCheckRecall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:background="#6A47C5"
+                android:padding="14dp"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/sectionResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/tvScoreTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Results"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/tvMemoryScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Memory: 0/8"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvAttentionScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attention — Hits: 0, Misses: 0, False taps: 0, Avg RT: – ms"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvInterpretation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Short explanation will appear here."
+                android:textSize="14sp"
+                android:textColor="#666666" />
+
+            <Button
+                android:id="@+id/btnDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:background="#6A47C5"
+                android:padding="14dp"
+                android:layout_marginTop="14dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnBackCognitive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Back to tests"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:background="#6A47C5"
+            android:padding="14dp" />
+
+    </LinearLayout>
+</ScrollView>

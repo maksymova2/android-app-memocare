@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MemoCare — Early Dementia Risk Screening"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#0D47A1"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Lifestyle questionnaire\n- 1 minute speech task\n- Mini cognitive tests\n- Risk indicator results"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnPrivacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PRIVACY POLICY"
+            android:layout_marginBottom="12dp"/>
+
+
+        <CheckBox
+            android:id="@+id/cbConsent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I agree to the processing of my data (including audio recording) for assessment purposes."
+            android:layout_marginBottom="16dp"/>
+
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="START ASSESSMENT"
+            android:enabled="false"/>
+    </LinearLayout>
+</ScrollView>

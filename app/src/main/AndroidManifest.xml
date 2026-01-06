@@ -1,0 +1,42 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.memocare2">
+
+    <!-- internet for backend requests -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- mic permission for speech test -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.MemoCare2"
+        android:usesCleartextTraffic="true">
+
+        <!-- internal screens (not exported) -->
+        <activity android:name=".MiniCognitiveTasksActivity" android:exported="false" />
+        <activity android:name=".ResultsActivity" android:exported="false" />
+        <activity android:name=".AuthChoiceActivity" android:exported="false" />
+        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".SignUpActivity" android:exported="false" />
+        <activity android:name=".DashboardActivity" android:exported="false" />
+        <activity android:name=".LifestyleQuestionnaireActivity" android:exported="false" />
+        <activity android:name=".ProfileActivity" android:exported="false" />
+        <activity android:name=".SpeechTestActivity" android:exported="false" />
+        <activity android:name=".SupportActivity" android:exported="false" />
+        <activity android:name=".ReviewActivity" android:exported="false" />
+        <activity android:name=".PaymentActivity" android:exported="false" />
+
+        <!-- launcher -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>
