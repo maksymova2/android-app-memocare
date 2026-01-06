@@ -44,14 +44,14 @@ public class DashboardActivity extends AppCompatActivity {
         btnReview        = findViewById(R.id.btnReview);
         btnLogout        = findViewById(R.id.btnLogout);
 
-        tvWelcome.setText("Welcome to MemoCare! 👋");
+        tvWelcome.setText("Welcome to MemoCare! ");
 
         if (savedInstanceState != null) {
             lifestyleScore = savedInstanceState.getString(STATE_LIFESTYLE_SCORE, "");
         }
 
         if (lifestyleScore != null && !lifestyleScore.isEmpty()) {
-            btnQuestionnaire.setText("Lifestyle Questionnaire ✓");
+            btnQuestionnaire.setText("Lifestyle Questionnaire");
         } else {
             btnQuestionnaire.setText("Lifestyle Questionnaire");
         }
@@ -68,12 +68,12 @@ public class DashboardActivity extends AppCompatActivity {
                         }
 
 
-                        btnQuestionnaire.setText("Lifestyle Questionnaire ✓");
+                        btnQuestionnaire.setText("Lifestyle Questionnaire");
 
                         if (!lifestyleScore.isEmpty()) {
                             Toast.makeText(this, "Lifestyle done. Score: " + lifestyleScore, Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(this, "Lifestyle saved ✅", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Lifestyle saved ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -134,7 +134,7 @@ public class DashboardActivity extends AppCompatActivity {
         lifestyleScore = "";
         btnQuestionnaire.setText("Lifestyle Questionnaire");
 
-        Toast.makeText(this, "Logged out. Results cleared ✅", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
 
 
         Intent i = new Intent(this, AuthChoiceActivity.class);
