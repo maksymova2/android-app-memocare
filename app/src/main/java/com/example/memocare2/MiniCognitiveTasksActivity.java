@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,14 +34,11 @@ public class MiniCognitiveTasksActivity extends AppCompatActivity {
     private static final long LETTER_INTERVAL_MS = 800;
     private static final double TARGET_PROB = 0.25;
 
-    // session
     private static final String PREFS_SESSION = "memocare_session";
     private static final String KEY_USER_EMAIL = "user_email";
 
-    // per-user results
     private static final String PREFS_RESULTS_BASE = "memocare_results_";
 
-    // cognitive keys
     private static final String KEY_COG_DONE = "cog_done";
     private static final String KEY_COG_MEMORY = "cog_memory_score";
     private static final String KEY_COG_WORDS_TOTAL = "cog_words_total";
@@ -164,10 +160,8 @@ public class MiniCognitiveTasksActivity extends AppCompatActivity {
                 hits++;
                 reactionTimes.add(rt);
                 targetActive = false;
-                Toast.makeText(this, "Hit (" + rt + " ms)", Toast.LENGTH_SHORT).show();
             } else {
                 falseTaps++;
-                Toast.makeText(this, "False tap", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -248,10 +242,12 @@ public class MiniCognitiveTasksActivity extends AppCompatActivity {
                 ", Avg RT: " + (avg < 0 ? "–" : (avg + " ms"));
         tvAttentionScore.setText(attTxt);
 
+        if (tvInterpretation != null) {
+            tvInterpretation.setText("");
+            tvInterpretation.setVisibility(View.GONE);
+        }
 
         saveCognitiveForUser(memoryScore, avg);
-
-        Toast.makeText(this, "Test finished", Toast.LENGTH_SHORT).show();
     }
 
     private void saveCognitiveForUser(int memoryScore, long avgRt) {

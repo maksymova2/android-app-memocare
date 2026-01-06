@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     android:background="#F8F2FF"
     android:fillViewport="true">
 
@@ -69,7 +70,6 @@
                 android:padding="12dp" />
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@+id/sectionAttention"
             android:layout_width="match_parent"
@@ -120,7 +120,6 @@
                 android:layout_marginTop="16dp" />
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@+id/sectionRecall"
             android:layout_width="match_parent"
@@ -159,7 +158,6 @@
                 android:padding="14dp"
                 android:layout_marginTop="12dp" />
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/sectionResult"
@@ -200,10 +198,8 @@
                 android:id="@+id/tvInterpretation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text=" "
-                android:textSize="14sp"
-                android:textColor="#666666" />
+                android:text=""
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btnDone"

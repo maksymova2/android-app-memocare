@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Locale;
 
 public class ResultsActivity extends AppCompatActivity {
 
@@ -50,6 +51,12 @@ public class ResultsActivity extends AppCompatActivity {
     private static final String KEY_SPEECH_DURATION = "speech_duration_sec";
 
     private static final String KEY_COG_DONE = "cog_done";
+    private static final String KEY_COG_MEMORY = "cog_memory_score";
+    private static final String KEY_COG_WORDS_TOTAL = "cog_words_total";
+    private static final String KEY_COG_HITS = "cog_hits";
+    private static final String KEY_COG_MISSES = "cog_misses";
+    private static final String KEY_COG_FALSE = "cog_false_taps";
+    private static final String KEY_COG_AVG_RT = "cog_avg_rt_ms";
 
     private String patientId = "";
     private String userEmail = "";
@@ -151,7 +158,11 @@ public class ResultsActivity extends AppCompatActivity {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
-            String resp = readAll(conn.getInputStream());
+            InputStream is = conn.getResponseCode() >= 200 && conn.getResponseCode() < 300
+                    ? conn.getInputStream()
+                    : conn.getErrorStream();
+
+            String resp = readAll(is);
             boolean paid = new JSONObject(resp).optBoolean("paid", false);
 
             runOnUiThread(() -> {
@@ -175,15 +186,38 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     private void unlockPremium() {
-        if (!isLifeDone()) {
+        String premium = buildPremiumText();
+
+        if (premium.isEmpty()) {
             tvPremiumResults.setVisibility(View.GONE);
             return;
         }
 
-        tvPremiumResults.setText(buildLifestylePremiumParagraph());
+        tvPremiumResults.setText(premium);
         tvPremiumResults.setVisibility(View.VISIBLE);
         btnPayUnlock.setVisibility(View.GONE);
         tvNotCompletedHint.setVisibility(View.GONE);
+    }
+
+    private String buildPremiumText() {
+        StringBuilder sb = new StringBuilder();
+
+        if (isLifeDone()) {
+            String life = buildLifestylePremiumParagraph();
+            if (!life.isEmpty()) {
+                sb.append(life);
+            }
+        }
+
+        if (isCogDone()) {
+            String cog = buildCognitivePremiumParagraph();
+            if (!cog.isEmpty()) {
+                if (sb.length() > 0) sb.append("\n\n");
+                sb.append(cog);
+            }
+        }
+
+        return sb.toString().trim();
     }
 
     private String buildLifestylePremiumParagraph() {
@@ -265,6 +299,65 @@ public class ResultsActivity extends AppCompatActivity {
         return "Your lifestyle profile suggests no major red flags. Maintaining regular sleep, physical activity, healthy weight, and a balanced diet will support long-term cognitive health.";
     }
 
+    private String buildCognitivePremiumParagraph() {
+        SharedPreferences p = getUserPrefs();
+        if (p == null) return "";
+
+        int memory = p.getInt(KEY_COG_MEMORY, 0);
+        int total = p.getInt(KEY_COG_WORDS_TOTAL, 8);
+        int hits = p.getInt(KEY_COG_HITS, 0);
+        int misses = p.getInt(KEY_COG_MISSES, 0);
+        int falseTaps = p.getInt(KEY_COG_FALSE, 0);
+        long avgRt = p.getLong(KEY_COG_AVG_RT, -1);
+
+        int targets = hits + misses;
+        double hitRate = targets > 0 ? (hits * 100.0 / targets) : 0.0;
+
+        String memLevel;
+        if (memory <= 2) memLevel = "low";
+        else if (memory <= 5) memLevel = "moderate";
+        else memLevel = "good";
+
+        String attLevel;
+        boolean slow = avgRt >= 0 && avgRt > 800;
+        boolean manyFalse = falseTaps >= 3;
+        boolean lowAccuracy = targets > 0 && hitRate < 60.0;
+
+        if (lowAccuracy || manyFalse) attLevel = "needs improvement";
+        else if (slow) attLevel = "okay, but a bit slow";
+        else attLevel = "good";
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format(Locale.ROOT,
+                "Cognitive test summary: Memory %d/%d. Attention accuracy %.0f%% (Hits %d, Misses %d, False taps %d",
+                memory, total, hitRate, hits, misses, falseTaps
+        ));
+
+        if (avgRt < 0) sb.append(", Avg reaction –).");
+        else sb.append(String.format(Locale.ROOT, ", Avg reaction %d ms).", avgRt));
+
+        if (memLevel.equals("low")) {
+            sb.append(" Your memory score looks low for this short word task, which can happen with stress, distraction, or rushing. Try to slow down, focus on grouping words, and avoid multitasking.");
+        } else if (memLevel.equals("moderate")) {
+            sb.append(" Your memory score looks moderate. With a bit more focus and a steady pace, this could improve.");
+        } else {
+            sb.append(" Your memory score looks good. Keeping a steady pace and staying focused supports this result.");
+        }
+
+        if (attLevel.equals("needs improvement")) {
+            sb.append(" Attention performance suggests more mistakes than expected. If you were distracted, tired, or tapping quickly, it can lower the score. Try repeating the test when rested and in a quiet place.");
+        } else if (attLevel.equals("okay, but a bit slow")) {
+            sb.append(" Attention accuracy looks fine, but reaction time is a bit slow. This can be normal if you are cautious. Practising short focus tasks can help speed up responses.");
+        } else {
+            sb.append(" Attention performance looks good with solid accuracy and control.");
+        }
+
+        sb.append(" Simple ways to improve: keep consistent sleep, take short daily walks, reduce distractions, and do small memory exercises (for example recalling a short shopping list or summarising a short text).");
+
+        return sb.toString().trim();
+    }
+
     private String n(String s) {
         return s == null ? "" : s.trim();
     }
@@ -275,6 +368,7 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     private String readAll(InputStream is) throws Exception {
+        if (is == null) return "";
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
         String line;
